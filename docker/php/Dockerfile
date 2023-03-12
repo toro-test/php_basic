@@ -1,6 +1,9 @@
 # Use the official PHP image as the base image
 FROM php:8.1-fpm-alpine
 
+# PDOを使用できるようにする
+RUN docker-php-ext-install pdo_mysql
+
 # Set the time zone
 RUN apk --update add tzdata && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
